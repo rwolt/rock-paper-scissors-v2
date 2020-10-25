@@ -1,24 +1,47 @@
-function game(){
+
     //Set the initial variable to keep track of the score
     let win = 0;
     let lose = 0;
     let series = 0;
 
-    //Keep playing as long as no player has reached 3 wins.
-    while (win < 3 && lose < 3){
-    //Prompt the user for a choice, output the result and output the score
     let objects = ['rock', 'paper', 'scissors'];
-    let playerChoice = prompt('Choose Rock, Paper, or Scissors', '');
-    console.log(roShambo(playerChoice, computerPlay(objects))); 
-    console.log(`You are ${win} for ${series}. Best of 5`);
+    let rock = document.getElementById('rock');
+    let paper = document.getElementById('paper');
+    let scissors = document.getElementById('scissors');
+    let msg = document.getElementsByClassName('score-box')[0];
+    let playerScore = document.getElementById('player-score');
+    let computerScore = document.getElementById('computer-score');
 
-    //Function to evaluate the player's choice against the computer update the score and return the result. 
+
+    if (win === 5) {
+        msg.textContent = 'You won 5 rounds, YOU ARE THE WINNER!';
+    }
+    else if (lose === 5 ) {
+        msg.textContent = 'Computer won 5 rounds, YOU LOSE!';
+    }
+    else {
+
+    rock.addEventListener('click', function(e) {
+       msg.textContent = roShambo(e.target.id, computerPlay(objects));
+       playerScore.textContent = win;
+       computerScore.textContent = lose;
+    });
+
+    paper.addEventListener('click', function(e) {
+       msg.textContent = roShambo(e.target.id, computerPlay(objects));
+       playerScore.textContent = win;
+       computerScore.textContent = lose;
+    });
+
+    scissors.addEventListener('click', function(e) {
+       msg.textContent = roShambo(e.target.id, computerPlay(objects));
+       playerScore.textContent = win;
+       computerScore.textContent = lose;
+    });
+
+    
     function roShambo (playerSelection, computerSelection) {
     
-    //Trim the whitespace from inputs and convert to lowercase for use with conditional statements. 
-        playerSelection = playerSelection.toLowerCase().trim();
-        computerSelection = computerSelection.toLowerCase().trim();
-
     //Compare player choice to computer choice and update the score and series count. 
         if (playerSelection === 'rock' && computerSelection === 'paper') {
             lose ++;
@@ -55,13 +78,13 @@ function game(){
         }
     }
     //If the player wins 3, announce the score and the winner
-    }if (win === 3) {
-            console.log(`You won ${win} out of 5. YOU ARE THE WINNER!`)
+    //if (win === 3) {
+    //        console.log(`You won ${win} out of 5. YOU ARE THE WINNER!`)
     //If the computer wins 3, announce the score and the winner
-    }else {
-            console.log(`Computer wins ${lose} out of 5. COMPUTER IS THE WINNER!`);
-    }
-    }
+    //}else {
+    //        console.log(`Computer wins ${lose} out of 5. COMPUTER IS THE WINNER!`);
+    //}
+
 
     //Function to randomly choose an index from the input array of choices.
     function computerPlay(choices) {
@@ -69,9 +92,4 @@ function game(){
         return (choices[randomIndex]);  
     }
 
-    
-
-</script>
-
-</body>
-</html>
+    }
