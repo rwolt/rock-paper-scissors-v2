@@ -9,25 +9,21 @@
     let paper = document.getElementById('paper');
     let scissors = document.getElementById('scissors');
     let msg = document.getElementsByClassName('score-box')[0];
-    let playerScore = document.getElementById('player-score');
-    let computerScore = document.getElementById('computer-score');
+    let computerChoice = document.getElementById('computer-choice');
 
     rock.addEventListener('click', function(e) {
-        msg.textContent = roShambo(e.target.id, computerPlay(objects));
+        let playerChoice = e.target.id;
+        msg.textContent = roShambo(playerChoice, computerPlay(objects));
         playerScore.textContent = win;
         computerScore.textContent = lose;
      });
  
      paper.addEventListener('click', function(e) {
         msg.textContent = roShambo(e.target.id, computerPlay(objects));
-        playerScore.textContent = win;
-        computerScore.textContent = lose;
      });
  
      scissors.addEventListener('click', function(e) {
         msg.textContent = roShambo(e.target.id, computerPlay(objects));
-        playerScore.textContent = win;
-        computerScore.textContent = lose;
      });
     
 
@@ -40,34 +36,43 @@
             return 'Computer wins 5, You Lose!';
         }
         else if (playerSelection === 'rock' && computerSelection === 'paper') {
+            computerChoice.className = 'paper';
             lose ++;
             series ++;
             return 'Computer throws paper. Paper covers rock. You Lose!';       
         }else if (playerSelection === 'rock' && computerSelection === 'scissors') { 
+            computerChoice.className = 'scissors';
             win ++;
             series ++;      
             return 'Computer throws scissors. Rock crushes scissors. You Win!';
         }else if (playerSelection === 'rock' && computerSelection === 'rock') {
+            computerChoice.className = 'rock';
             return 'Computer also throws rock. Try again.';
         }else if (playerSelection === 'paper' && computerSelection === 'rock') {
+            computerChoice.className = 'rock';
             win++;
             series++;
             return 'Computer throws rock. Paper covers rock. You Win!';
         }else if (playerSelection === 'paper' && computerSelection === 'paper') { 
+            computerChoice.className = 'paper';
             return 'Computer also throws paper. Try again.';
         }else if (playerSelection === 'paper' && computerSelection === 'scissors') {
+            computerChoice.className = 'scissors';
             lose++;
             series++;
             return 'Computer throws scissors. Scissors cuts paper. You Lose!';
         }else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+            computerChoice.className = 'rock';
             lose++;
             series++;
             return 'Computer throws rock. Rock crushes scissors. You Lose!';
         }else if (playerSelection === 'scissors' && computerSelection === 'paper') { 
+            computerChoice.className = 'paper';
             win++;   
             series++;
             return 'Computer throws paper. Scissors cut paper. You Win!';
         }else if (playerSelection === 'scissors' && computerSelection === 'scissors') {
+            computerChoice.className = 'scissors';
             return 'Computer also throws scissors. Try again';
         }else { 
             return'Something has gone wrong. Choose only Rock, Paper, or Scissors.';
@@ -83,9 +88,6 @@
     //        console.log(`Computer wins ${lose} out of 5. COMPUTER IS THE WINNER!`);
     //}
  
-
-
-    //Function to randomly choose an index from the input array of choices.
     function computerPlay(choices) {
         let randomIndex = Math.floor(Math.random() * choices.length);
         return (choices[randomIndex]);  

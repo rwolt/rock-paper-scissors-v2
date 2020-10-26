@@ -16,27 +16,21 @@ body {
 
 .score {
     height: 100px;
-    width: 100px;
+    width: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 3.0em;
 }
 
-#player-score {
-    color: blue;
-}
-
-#computer-score {
-    color: red;
-}
-
 .container {
     display: flex;
-    width: 50%;
-    margin: 20px auto;
+    width: 35%;
+    margin: 20px 100px;
+    align-items: flex-end;
     justify-content: space-between;
     align-items: center;
+    float: left;
 }
 
 .choice {
@@ -46,6 +40,53 @@ body {
     background-color: rgb(197, 229, 240);
     border: none;
 }
+
+.slide-in {
+    animation-duration: 0.6s;
+    animation-name: slide-in;
+}
+
+@keyframes slidein {
+    from {
+        
+    }
+
+    to {
+
+    }
+}
+
+.computer-player {
+    margin: 20px 100px;
+    width: 35%;
+    float: right;
+    display: flex;
+    justify-content: center;
+}
+
+#computer-choice {
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+}
+
+.rock {
+    background: url(images/rock_comp.png);
+    background-color: lightcoral;
+}
+
+.paper {
+    background: url(images/paper_comp.png);
+    background-color: lightcoral;
+}
+
+.scissors {
+    background: url(images/scissors_comp.png);
+    background-color: lightcoral;
+}
+
+
+
 
 .choice:hover {
     cursor: pointer;
