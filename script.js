@@ -12,38 +12,34 @@
     let playerScore = document.getElementById('player-score');
     let computerScore = document.getElementById('computer-score');
 
-
-    if (win === 5) {
-        msg.textContent = 'You won 5 rounds, YOU ARE THE WINNER!';
-    }
-    else if (lose === 5 ) {
-        msg.textContent = 'Computer won 5 rounds, YOU LOSE!';
-    }
-    else {
-
     rock.addEventListener('click', function(e) {
-       msg.textContent = roShambo(e.target.id, computerPlay(objects));
-       playerScore.textContent = win;
-       computerScore.textContent = lose;
-    });
-
-    paper.addEventListener('click', function(e) {
-       msg.textContent = roShambo(e.target.id, computerPlay(objects));
-       playerScore.textContent = win;
-       computerScore.textContent = lose;
-    });
-
-    scissors.addEventListener('click', function(e) {
-       msg.textContent = roShambo(e.target.id, computerPlay(objects));
-       playerScore.textContent = win;
-       computerScore.textContent = lose;
-    });
-
+        msg.textContent = roShambo(e.target.id, computerPlay(objects));
+        playerScore.textContent = win;
+        computerScore.textContent = lose;
+     });
+ 
+     paper.addEventListener('click', function(e) {
+        msg.textContent = roShambo(e.target.id, computerPlay(objects));
+        playerScore.textContent = win;
+        computerScore.textContent = lose;
+     });
+ 
+     scissors.addEventListener('click', function(e) {
+        msg.textContent = roShambo(e.target.id, computerPlay(objects));
+        playerScore.textContent = win;
+        computerScore.textContent = lose;
+     });
     
+
+
     function roShambo (playerSelection, computerSelection) {
-    
-    //Compare player choice to computer choice and update the score and series count. 
-        if (playerSelection === 'rock' && computerSelection === 'paper') {
+        if (win == 5) {
+            return 'You win 5, you are the Winner!'
+        }
+        else if (lose == 5) {
+            return 'Computer wins 5, You Lose!';
+        }
+        else if (playerSelection === 'rock' && computerSelection === 'paper') {
             lose ++;
             series ++;
             return 'Computer throws paper. Paper covers rock. You Lose!';       
@@ -77,6 +73,8 @@
             return'Something has gone wrong. Choose only Rock, Paper, or Scissors.';
         }
     }
+
+
     //If the player wins 3, announce the score and the winner
     //if (win === 3) {
     //        console.log(`You won ${win} out of 5. YOU ARE THE WINNER!`)
@@ -84,6 +82,7 @@
     //}else {
     //        console.log(`Computer wins ${lose} out of 5. COMPUTER IS THE WINNER!`);
     //}
+ 
 
 
     //Function to randomly choose an index from the input array of choices.
@@ -92,4 +91,4 @@
         return (choices[randomIndex]);  
     }
 
-    }
+    
