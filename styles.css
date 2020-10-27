@@ -21,19 +21,18 @@ body {
 
 #player-score {
     position: absolute;
-    left: 350px;
+    left: 550px;
     font-size: 60px;
 }
 
 #computer-score {
     position: absolute;
-    right: 350px;
+    right: 550px;
     font-size: 60px;
 }
 
 .container {
     width: 50%;
-    margin: 20px 0px;
     float: left;
 }
 
@@ -83,7 +82,6 @@ body {
 }
 
 .computer-player {
-    margin: 20px 0px;
     width: 50%;
     float: right;
 }
